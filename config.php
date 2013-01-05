@@ -1,13 +1,22 @@
 <?php
+class Config
+{
+    static $confArray;
 
-error_reporting(E_ALL);
+    public static function read($name)
+    {
+        return self::$confArray[$name];
+    }
+
+    public static function write($name, $value)
+    {
+        self::$confArray[$name] = $value;
+    }
+
+}
 
 // db
-Config::write('db.engine', 'pgsql');
 Config::write('db.host', 'localhost');
-Config::write('db.port', '5432');
-Config::write('db.basename', 'bp');
-Config::write('db.user', 'postgres');
-Config::write('db.password', 'postgres');
-
-?>
+Config::write('db.user', 'michalvlcek');
+Config::write('db.password', 'SkeeFeET51wiNks');
+Config::write('db.name', 'test');
