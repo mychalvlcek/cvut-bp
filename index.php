@@ -2,8 +2,8 @@
 
 error_reporting(E_ALL);
 
-require('config.php');
 require('bootstrap.php');
+require('cfg.php');
 
 $db = Database::getInstance();
 
