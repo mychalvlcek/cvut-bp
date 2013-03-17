@@ -2,24 +2,11 @@
 
 error_reporting(E_ALL);
 
-require('bootstrap.php');
-require('cfg.php');
+include_once('bootstrap.php');
+include_once('cfg.php');
 
-$db = Database::getInstance();
+Logger::start(DEVELOPMENT);
+$frontController = new FrontController(new Router(), isset($_GET['route']) ? $_GET['route'] : 'home', isset($_GET['action']) ? $_GET['action'] : null); 
+echo $frontController->output();
 
-// registry predstavuje globalni kontext
-$registry = new Registry();
-
-// vyrobime view templatovaci engine
-$template = new Template($registry);
-// pridame ho do globalniho kontextu
-$registry->template = $template;
-
-// vyrobime router
-$router = new Router($registry);
-// pridame ho do globalniho kontextu
-$registry->router = $router;
-
-$router->route();
-	
 ?>

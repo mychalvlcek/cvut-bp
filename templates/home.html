@@ -1,8 +1,17 @@
+<p class="lead">home.html</p>
+<p>Text na HomePage</p>
+<!--{clicked}-->
+
 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-<h2>Testovací výpis z databáze, test PDO</h2>
-<code>$db->query("SELECT * FROM `users`");</code>
-<ul>
-	<? foreach( $users as $user ): ?>
-	<li><?="$user[id]. $user[username]"?></li>
-	<? endforeach; ?>
-</ul>
+
+<h2>Testovací načtení z URL</h2>
+
+<form action="/home/url" method="post">
+	<input class="input-xxlarge" type="text" name="url" placeholder="http://www.example.com/" />
+	<span class="help-block">Vložte URL adresu</span>
+	<button class="btn" type="submit">Potvrdit</button>
+</form>
+<h3>Výpis odkazů:</h3>
+<code><!--{anchors}--></code>
+<h3>Výpis souboru:</h3>
+<code><!--{file}--></code>

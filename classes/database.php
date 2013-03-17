@@ -2,29 +2,33 @@
 
 class Database {
 
-	private static $instance;
 	private $dbh;
+	private static $instance;
 	private $stmt;
 
-	private function __construct() {
-		$dsn = 'mysql:host=localhost;dbname=' . Config::read('db.name');
+	private function __construct($dbDriver = DB_DRIVER,
+								 $dbHost = DB_HOST,
+								 $dbUser = DB_USER,
+								 $dbPass = DB_PASSWORD,
+								 $dbName = DB_NAME
+								 ) {
+
+		$dsn = $dbDriver.':host='.$dbHost.';dbname=' . $dbName;
 		$options = array(
-					PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8',
+					PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
 					PDO::ATTR_PERSISTENT => true
 					);
 		try {
-			$this->dbh = new PDO($dsn, Config::read('db.user'), Config::read('db.password'), $options);
-		}
-		catch (PDOException $e) {
-			echo $e->getMessage();
+			$this->dbh = new PDO($dsn, $dbUser, $dbPass, $options);
+		} catch (PDOException $e) {
+			trigger_error($e->getMessage());
 			exit();
 		}
 	}
 
 	public static function getInstance() {
 		if (!isset(self::$instance)) {
-			$object = __CLASS__;
-			self::$instance = new $object;
+			self::$instance = new Database();
 		}
 		return self::$instance;
 	}
@@ -53,7 +57,7 @@ class Database {
 	}
 
 	public function execute() {
-		$this->_queryCounter++;
+		//$this->_queryCounter++;
 		return $this->stmt->execute();
 	}
 
@@ -84,9 +88,11 @@ class Database {
 		return $this->dbh->rollBack();
 	}
 
-	// returns number of rows updated, deleted, or inserted
-	public function rowCount()
-	{
+	/**
+	 * Returns number of rows updated, deleted, or inserted
+	 * @return int number of rows
+	 */
+	public function rowCount() {
 		return $this->stmt->rowCount();
 	}
 
