@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<dataset>
+    <users id="1" username="vlcekmi3" password="heslo" salt="salt" created="2010-04-24 17:15:23" />
+    <users id="2" username="vlcekmi3x" password="heslo" salt="salt" created="2010-04-24 17:15:23" />
+</dataset>

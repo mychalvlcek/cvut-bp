@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--!include _head.html-->
+</head>
+<body id="login-body">
+	<div class="container">
+		<ul class="nav nav-pills">
+			<li class="active"><a href="/aut/login">Zpět na přihlášení</a></li>
+		</ul>
+		<h1>Registrace</h1>
+		<div class="row">
+			<div class="span6">
+				<p class="lead">Pro novou registraci vyplňte všechny formulářové položky.</p>
+				<!--!alerts-->
+				<form action="" method="post" class="form-horizontal form-register">
+					<div class="control-group">
+						<label class="control-label" for="email">Email</label>
+						<div class="controls">
+							<input id="email" type="email" name="email" data-required data-validate="email" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="username">Username</label>
+						<div class="controls">
+							<input id="username" type="text" name="username" data-required />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="password">Heslo</label>
+						<div class="controls">
+							<input id="password" type="password" name="password" data-required />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="confirm">Potvrzení hesla</label>
+						<div class="controls">
+							<input id="confirm" type="password" name="confirm" data-required data-conditional="confirm" />
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<button class="btn btn-primary">Registrovat</button>
+							<button type="reset" class="btn">Reset</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="span5 offset1">
+				<blockquote class="pull-left">
+					<h2>Popis</h2>
+					<p>Modul pro testery, který porovnává testovací skripty proti testované aplikaci. 
+						Na základě srovnání testovacích skriptů proti <abbr rel="tooltip" title="Structured Query Language">SQL</abbr> souborům nebo proti <abbr rel="tooltip" title="HyperText Markup Language">HTML</abbr> kódu
+						 testované aplikace modul vyhodnotí výsledek v podobě logu, ve kterém jsou 
+						 obsaženy všechny informace o průběhu kontroly.</p>
+					<p>Porovnání je možné proti SQL souborům, nebo proti výstupu v podobě HTML kódu.</p>
+				</blockquote>
+			</div>
+		</div>
+	</div>
+	<!--!include _imports.html-->
+</body>
+</html>

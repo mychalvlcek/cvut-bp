@@ -1,0 +1,46 @@
+<h2>Spuštění procesu srovnání</h2>
+<form action="" method="post" class="form-horizontal">
+	<div class="control-group">
+		<label class="control-label" for="script-set-select">Vyberte set skriptů</label>
+		<div class="controls">
+			<select id="script-set-select" name="script_dir">
+				<option value="">Vyberte</option>
+				<!--{while scripts}-->
+				<option value="<!--{id}-->"><!--{title}--></option>
+				<!--{/while}-->
+			</select>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="repository-select">Vyberte repozitář</label>
+		<div class="controls">
+			<select id="repository-select" name="repository">
+				<option value="">Vyberte</option>
+				<!--{while repositories}-->
+				<option value="<!--{id}-->"><!--{name}--></option>
+				<!--{/while}-->
+			</select>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="rule-select">Pravidla kontroly</label>
+		<div class="controls">
+			<select id="rule-select" name="rule">
+				<option value="">Vyberte</option>
+			</select>
+		</div>
+	</div>
+	<div class="control-group">
+		<div class="controls">
+			<button type="submit" class="btn">Potvrdit</button>
+		</div>
+	</div>
+</form>
+
+<p class="lead">Nápověda:</p>
+<ul>
+	<li>Výběr konkrétního setu (složky) testovacích skriptů, na kterých se bude srovnávat</li>
+	<li>Výběr repozitáře prvků, které se budou ve skriptech hledat</li>
+	<li>Výběr pravidel, které se budou aplikovat při hledání prvků ve skriptech</li>
+	<li>Spuštění procesu srovnání</li>
+</ul>

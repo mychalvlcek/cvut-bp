@@ -1,0 +1,40 @@
+<div class="span8 offset2">
+	<form class="form-search" action="" method="get">
+		<!--{if criterium?<a class="badge" href="/repository/">Zrušit filtr</a>:{/if}-->
+		<div class="input-append">
+			<input type="text" class="span5 search-query" name="criterium" placeholder="%nazev%" />
+			<input class="btn" type="submit" value="Hledat" />
+		</div>
+	</form>
+</div>
+<table class="table table-striped table-condensed">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Dir</th>
+			<th>Název</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<!--{while data}-->
+		<tr>
+			<td><a href="/script/show/<!--{id}-->"><!--{id}--></a></td>
+			<td><!--{dir_id}--></td>
+			<td><a href="/script/show/<!--{id}-->"><!--{title}--></a></td>
+			<td><!--{description}--></td>
+			<td><a class="label label-important" title="Smazat repozitář">Smazat</a></td>
+		</tr>
+		<!--{/while}-->
+		<!--{if noresults?
+		<tr>
+			<td></td>
+			<td></td>
+			<td class="muted">Nebyly nalezeny žádné výsledky.</td>
+			<td></td>
+			<td></td>
+		</tr>
+		:{/if}-->
+	</tbody>
+</table>

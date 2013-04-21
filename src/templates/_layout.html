@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--!include _head.html-->
+</head>
+<body>
+	<div id="wrap">
+		<!-- navigation -->
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					<a class="brand" href="/">Porovnat!</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<!--{while menu}-->
+								<li class="<!--{if menuroute == route?active:{/if}-->"><a href="/<!--{url}-->/"><!--{title}--></a></li>
+							<!--{/while}-->
+						</ul>
+						<ul class="nav pull-right">
+							<li class="divider-vertical"></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Přihlášen jako <!--{auth_username}--> <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="/login">Změna hesla</a></li>
+									<li class="divider"></li>
+									<li><a href="/auth/logout">Odhlásit</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<!--!alerts-->
+			<!--{template_file}-->
+			<div id="push"></div>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="container">
+			<p class="muted credit">Vytvořil <a href="mailto:vlcekmi3@fel.cvut.cz">Michal Vlček</a> <abbr rel="tooltip" title="Fakulta Elektrotechnická">FEL</abbr> <abbr rel="tooltip" title="České vysoké učení technické">ČVUT</abbr> @ 2013.</p>
+		</div>
+	</div>
+	<!--!include _imports.html-->
+</body>
+</html>
