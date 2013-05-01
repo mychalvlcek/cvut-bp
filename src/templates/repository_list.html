@@ -11,30 +11,36 @@
 	<thead>
 		<tr>
 			<th><!--{sortable id}-->#<!--{/sortable}--></th>
+			<th class="name"><!--{sortable name}-->Název<!--{/sortable}--></th>
+			<th>Stats</th>
 			<th><!--{sortable date_of_creation}-->Čas<!--{/sortable}--></th>
-			<th><!--{sortable name}-->Název<!--{/sortable}--></th>
-			<th></th>
 			<th></th>
 		</tr>
 	</thead>
 	<tbody>
+		
 		<!--{while data}-->
 		<tr>
-			<td><a href="/repository/show/<!--{id}-->"><!--{id}--></a></td>
-			<td title="<!--{date_of_creation}-->"><!--{datef}--></td>
-			<td><a href="/repository/show/<!--{id}-->"><!--{name}--></a></td>
-			<td>SQL, HTML</td>
-			<td><a class="label label-important delete-btn" href="/repository/delete/<!--{id}-->" title="Smazat repozitář">Smazat</a></td>
+			<td class="id"><a href="/repository/show/<!--{id}-->"><!--{id}--></a></td>
+			<td class="name"><a href="/repository/show/<!--{id}-->"><!--{name}--> (<!--{author}-->)</a></td>
+			<td class="stats"><span class="label">SQL <!--{sql_pocet}--></span> <span class="label">HTML <!--{html_pocet}--></span></td>
+			<td class="date" title="<!--{date_of_creation}-->"><!--{datef}--></td>
+			<td class="actions"><a class="label label-important delete-btn" href="/repository/delete/<!--{id}-->" title="Smazat repozitář">Smazat</a></td>
 		</tr>
 		<!--{/while}-->
+
 		<!--{if noresults?
 		<tr>
 			<td></td>
 			<td></td>
-			<td class="muted">Nebyly nalezeny žádné výsledky. Vytvořte <a href="/repository-new/">nový</a> repozitář</td>
+			<td class="muted">Nebyly nalezeny žádné výsledky. Vytvořte <a href="/repository/add/">nový</a> repozitář</td>
 			<td></td>
 			<td></td>
 		</tr>
 		:{/if}-->
+
 	</tbody>
 </table>
+<div class="pagination pagination-centered">
+	<!--{pagination}-->
+</div>

@@ -1,8 +1,8 @@
 <?php
 
-class LogListViewModel extends ViewModel implements Listable {
+class ComparisonListViewModel extends ViewModel implements Listable {
 	
-	public function __construct(LogModel $model) {
+	public function __construct(ComparisonModel $model) {
 		$this->model = $model;
 	}
 

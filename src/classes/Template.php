@@ -151,7 +151,7 @@ class Template {
 				for ( $i = 0; $i < sizeof($data); $i++ ) {
 					$iter = $loop;
 					$iter2 = 0;
-					while ( preg_match("#<!--\{(if )?([a-z0-9_]+) *(==? *([a-z0-9_]+))? *\?([^:]*):([^/]*(?=\{/if\}-->))\{/if\}-->#", $iter, $parts) ) {
+					while ( preg_match("#<!--\{(if )?([a-z0-9_]+) *(==? *([a-z0-9_]+))? *\?([^:]*):(.*(?=\{/if\}-->))\{/if\}-->#", $iter, $parts) ) {
 						if ( strlen($parts[4]) > 0 ) {
 							if ( isset($data[$i][$parts[2]]) ) {
 								if ( $data[$i][$parts[2]] == $this->get($parts[4]) || $data[$i][$parts[2]] == $parts[4] ) {
@@ -163,7 +163,7 @@ class Template {
 								$rep = "";
 							}
 						} else {
-							if ( $this->get($parts[2]) ) {
+							if ( (isset($data[$i][$parts[2]]) && $data[$i][$parts[2]]) || $this->get($parts[2]) ) {
 								$rep = $parts[5];
 							} else {
 								$rep = $parts[6];
@@ -239,6 +239,7 @@ class Template {
 			}
 			$back = $_GET;
 			unset($_GET['rt']);
+			unset($_GET['page']);
 			$_GET['sort'] = $sort;
 			$_GET['order'] = $order;
 			$qs = '?'.http_build_query($_GET, "", "&amp;");

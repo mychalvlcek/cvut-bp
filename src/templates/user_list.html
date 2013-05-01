@@ -4,7 +4,7 @@
 			<input type="text" class="span5 search-query" name="criterium" placeholder="%jmeno%" />
 			<input class="btn" type="submit" value="Hledat" />
 		</div>
-		<!--{if criterium?<a class="badge" href="/repository/">Zrušit filtr</a>:{/if}-->
+		<!--{if criterium?<a class="badge" href="/user/list/">Zrušit filtr</a>:{/if}-->
 	</form>
 </div>
 <table class="table table-striped table-condensed">
@@ -20,11 +20,14 @@
 	<tbody>
 		<!--{while data}-->
 		<tr>
-			<td><a href="/user/show/<!--{id}-->"><!--{id}--></a></td>
-			<td><a href="/user/show/<!--{id}-->"><!--{username}--></a></td>
-			<td><!--{is_admin}--></td>
+			<td><!--{id}--></td>
+			<td><!--{username}--></td>
+			<td><!--{if is_admin?<span class="label label-info" rel="tooltip" title="Administrator">A</a>:{/if}--></td>
 			<td title="<!--{date_of_creation}-->"><!--{datef}--></td>
-			<td><a class="label label-important delete-btn" href="/repository/delete/<!--{id}-->" title="Smazat repozitář">Smazat</a></td>
+			<td>
+				<!--{if is_admin?<a class="label label-info delete-btn" href="/user/makeuser/<!--{id}-->" title="Vytvořit admina">Zrušit práva</a>:<a class="label label-info delete-btn" href="/user/makeadmin/<!--{id}-->" title="Vytvořit admina">Přidat práva</a>{/if}-->
+				<a class="label label-important delete-btn" href="/user/delete/<!--{id}-->" title="Smazat uživatele">Smazat</a>
+			</td>
 		</tr>
 		<!--{/while}-->
 		<!--{if noresults?

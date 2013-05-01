@@ -1,0 +1,85 @@
+<h2 class="detail-heading">Editace: <span class="muted">#<!--{id}--></span> <!--{title}--></h2>
+<div class="detail-actionbar">
+	<ul class="nav nav-pills">
+		<li class="active"><a href="/script/show/<!--{id}-->">Zpět na detail</a></li>
+	</ul>
+</div>
+<div class="clear"></div>
+<hr />
+<form action="" method="post" class="form-horizontal" autocomplete>
+	<div class="control-group">
+		<label class="control-label" for="sys_id">Interní ID</label>
+		<div class="controls">
+			<input id="sys_id" type="text" name="sys_id" data-required />
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="nazev">Název</label>
+		<div class="controls">
+			<input id="nazev" type="text" name="title" data-required />
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="sada">Sada</label>
+		<div class="controls">
+			<select id="sada" name="dir_id" data-required>
+				<option value="">Vyberte</option>
+				<option value="1">Sada</option>
+			</select>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="summarz">Shrnutí testu</label>
+		<div class="controls">
+			<textarea id="summary" rows="3" name="summary" placeholder="Krátké shrnutí testu"></textarea>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="description">Popis</label>
+		<div class="controls">
+			<textarea id="description" rows="6" name="description" placeholder="Popis testu"></textarea>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="data">Data</label>
+		<div class="controls">
+			<textarea id="data" rows="6" name="data" placeholder="Data"></textarea>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="input_conditions">Vstupní podmínky</label>
+		<div class="controls">
+			<textarea id="description" rows="3" name="input_conditions" placeholder="Vstupní podmínky"></textarea>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="expected_result">Očekávaný výsledek</label>
+		<div class="controls">
+			<textarea id="expected_result" rows="3" name="expected_result" placeholder="Očekávaný výsledek"></textarea>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="author">Autor</label>
+		<div class="controls">
+			<input id="author" type="text" name="author" data-required />
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="priority">Priorita</label>
+		<div class="controls">
+			<input id="priority" type="text" name="priority" data-required />
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="state">Stav</label>
+		<div class="controls">
+			<input id="state" type="text" name="state" data-required />
+		</div>
+	</div>
+	<div class="control-group">
+		<div class="controls">
+			<button class="btn btn-primary">Uložit</button>
+			<button type="reset" class="btn">Reset</button>
+		</div>
+	</div>
+</form>

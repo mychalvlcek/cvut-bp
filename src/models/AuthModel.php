@@ -1,10 +1,6 @@
 <?php
 
 class AuthModel extends Model {
-	
-	public function __construct(PDO $db) {
-		$this->db = $db;
-	}
 
 	public function createUser($data) {
 		$data['salt'] = sha1(time());
@@ -14,15 +10,27 @@ class AuthModel extends Model {
 		return $this->db->lastInsertId();
 	}
 
+	public function changePassword($data) {
+		$stmt = $this->db->prepare("UPDATE users SET password = SHA1(CONCAT(:password, salt)) WHERE id = :id AND password = SHA1(CONCAT(:old_password, salt))"); 
+		$stmt->execute(array(':id' => $data['id'], ':old_password' => $data['old_password'], ':password' => $data['password']));
+		return $stmt->rowCount();
+	}
+
 	public function findUser($username, $password) {
 		$stmt = $this->db->prepare("SELECT id, email, username, is_admin FROM `users` WHERE username = :username AND password = SHA1(CONCAT(:password, salt));");
 		$stmt->execute(array(':username' => $username, ':password' => $password));
 		return $stmt->fetchAll();
 	}
 
-	public function userExists($email = '') {
-		$stmt = $this->db->prepare("SELECT * FROM `users` WHERE email = :email;");
-		$stmt->execute(array(':email' => $email));
+	public function userExists($email = '', $username) {
+		$stmt = $this->db->prepare("SELECT * FROM `users` WHERE email = :email OR username = :username;");
+		$stmt->execute(array(':email' => $email, ':username' => $username));
+		return $stmt->rowCount();
+	}
+
+	public function checkUserPassword($id = '', $password = '') {
+		$stmt = $this->db->prepare("SELECT * FROM `users` WHERE id = :id AND password = SHA1(CONCAT(:password, salt))"); 
+		$stmt->execute(array('id' => $id, ':password' => $password));
 		return $stmt->rowCount();
 	}
 	

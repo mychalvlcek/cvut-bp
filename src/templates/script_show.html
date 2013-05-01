@@ -1,3 +1,22 @@
-<h2><!--{title}--></h2>
-<p class="lead"><span class="muted">id:</span> <!--{id}--></p>
-<p class="lead"><span class="muted">desc:</span> <!--{description}--></p>
+<h2 class="detail-heading"><span class="muted">#<!--{id}--></span> <!--{title}--></h2>
+<div class="detail-actionbar">
+	<a class="btn" href="/script/edit/<!--{id}-->">Upravit</a>
+	<a class="btn" href="/script/delete/<!--{id}-->">Smazat</a>
+</div>
+<div class="clear"></div>
+<p>
+	<span class="muted">Interní ID:</span> <!--{sys_id}-->,
+	<span class="muted">Sada skriptů:</span> <!--{dir_id}-->,
+	<span class="muted">Priorita:</span> <!--{priority}-->,
+	<span class="muted">Autor:</span> <!--{author}-->,
+	<span class="muted">Stav:</span> <span class="label"><!--{state}--></span>
+</p>
+<hr />
+
+<p class="lead"><!--{summary}--></p>
+<p><!--{description}--></p>
+<p><span class="muted">Hloubka:</span> <!--{depth}--></p>
+<p><span class="muted">Data:</span> <!--{data}--></p>
+<p><span class="muted">Vstupní podmínky:</span> <!--{input_conditions}--></p>
+<p><span class="muted">Očekávaný výsledek:</span> <!--{expected_result}--></p>
+<p><span class="muted">Testovací prostředí:</span> <!--{test_environment}--></p>

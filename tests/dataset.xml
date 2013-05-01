@@ -1,5 +1,6 @@
 <?xml version="1.0" ?>
 <dataset>
-    <users id="1" username="vlcekmi3" password="heslo" salt="salt" created="2010-04-24 17:15:23" />
-    <users id="2" username="vlcekmi3x" password="heslo" salt="salt" created="2010-04-24 17:15:23" />
+    <users id="1" username="administrator" email="admin@admin.cz" password="199eb32ee17a386a28a46d6d4578f41bdb78d2af" salt="58a5c4888bf28fa78f9cc2eec295e4f09b345e6d" is_admin="1" date_of_creation="2010-04-24 17:15:23" />
+    <users id="2" username="vlcekmi3" email="mychalvlcek@gmail.com" password="199eb32ee17a386a28a46d6d4578f41bdb78d2af" salt="58a5c4888bf28fa78f9cc2eec295e4f09b345e6d" is_admin="1" date_of_creation="2010-04-24 17:15:23" />
+    <users id="3" username="uzivatel" email="mychalvlcek@gmail.com" password="199eb32ee17a386a28a46d6d4578f41bdb78d2af" salt="58a5c4888bf28fa78f9cc2eec295e4f09b345e6d" is_admin="0" date_of_creation="2010-04-24 17:15:23" />
 </dataset>

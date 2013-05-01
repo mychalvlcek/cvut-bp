@@ -10,6 +10,7 @@ class AuthController extends Controller {
 		if(count($_POST))
 			if($this->model->checkLogin($_POST)) {
 				header('Location: /');
+				die();
 			}
 	}
 
@@ -17,11 +18,16 @@ class AuthController extends Controller {
 		if(count($_POST))
 			if($this->model->addUser($_POST)) {
 				header('Location: /login');
+				die();
 			}
 	}
 
+	public function password() {
+		if(count($_POST))
+			$this->model->changePassword($_POST);
+	}
+
 	public function logout() {
-		// info odhlasen
 		session_destroy();
 		header('Location: /');
 		die();

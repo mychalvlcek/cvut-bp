@@ -24,7 +24,6 @@ class UserListViewModel extends ViewModel implements Listable, Searchable {
 		if($this->searchName == '')
 			return $this->model->getAll();
 		return $this->model->findByName($this->searchName);
-	
 	}
 }
 

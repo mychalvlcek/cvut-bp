@@ -1,15 +1,14 @@
 <?php
 
-class RepositoryListView extends View {
+class SearchableListView extends View {
 
 	public function __construct($route, Listable $model, Template $template) {
-		$this->route = $route;
-		$this->model = $model;
-		$this->template = $template;
+		parent::__construct($route, $model, $template);
 	}
 
 	public function output() {
 		$this->template->set('html_title', $this->model->getEntityName());
+
 		$data = $this->model->getData();
 		$this->template->set('data', $data);
 		if(!count($data)) {

@@ -2,7 +2,6 @@
 
 require_once $_SERVER["DOCUMENT_ROOT"].'/tests/AbstractDatabaseTestCase.php';
 require_once $_SERVER["DOCUMENT_ROOT"].'/src/classes/Config.php';
-require_once $_SERVER["DOCUMENT_ROOT"].'/src/classes/Database.php';
 require_once $_SERVER["DOCUMENT_ROOT"].'/src/models/Model.php';
 require_once $_SERVER["DOCUMENT_ROOT"].'/src/models/UserModel.php';
 require_once $_SERVER["DOCUMENT_ROOT"].'/cfg.php';
@@ -12,7 +11,7 @@ class UserModelTest extends AbstractDatabaseTestCase {
  
 	protected function setUp() {
 		// before
-		$this->m = new UserModel(Database::getInstance());
+		$this->m = new UserModel(new PDO('mysql:host=localhost;dbname=bp', 'root', 'root'));
 	}
 
 	protected function tearDown() {
@@ -22,7 +21,7 @@ class UserModelTest extends AbstractDatabaseTestCase {
 	public function testGetAll() {
 		$data = $this->m->getAll();
 		//$this->assertEquals(2, $this->getConnection()->getRowCount('users'));
-		$this->assertEquals(2, sizeof($data));
+		$this->assertEquals(3, sizeof($data));
 	}
 
 	/*

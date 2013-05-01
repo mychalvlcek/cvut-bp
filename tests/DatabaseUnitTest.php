@@ -2,7 +2,7 @@
 
 require_once dirname(dirname(__FILE__)).'/tests/AbstractDatabaseTestCase.php';
 
-class Test extends AbstractDatabaseTestCase {
+class DatabaseUnitTest extends AbstractDatabaseTestCase {
 
 	public function testCreateQueryTable() {
 		//$tableNames = array('users');
@@ -12,7 +12,7 @@ class Test extends AbstractDatabaseTestCase {
 	}
 
 	public function testGetRowCount() {
-		$this->assertEquals(2, $this->getConnection()->getRowCount('users'));
+		$this->assertEquals(3, $this->getConnection()->getRowCount('users'));
 	}
 
 }

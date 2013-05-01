@@ -10,8 +10,8 @@ class AuthViewModel extends ViewModel {
 		if(isset($data['username']) && isset($data['password']) && count($data) == 2) {
 			$user = $this->model->findUser($data['username'], $data['password']);
 			if(count($user) == 1) {
-				$this->setSessionData($user[0]);
-				$this->addInfo('success', 'Přihlášen');
+				$this->setSession('user', $user[0]);
+				$this->addInfo('info', 'Přihlášen');
 				return true;
 			} else {
 				$this->addInfo('error', 'Nesprávné přihlašovací údaje');
@@ -20,8 +20,38 @@ class AuthViewModel extends ViewModel {
 		}
 	}
 
+	public function changePassword($data = array()) {
+		if(isset($data['old_password']) && isset($data['password']) && isset($data['confirm']) && count($data) == 3) {
+			if(isset($data['old_password']) && strlen($data['old_password']) < 1 ) {
+				$this->addInfo('error', 'Zadejte staré heslo');
+			}
+			if( isset($data['password']) && isset($data['confirm']) && $data['password'] != $data['confirm'] ) {
+				$this->addInfo('error', 'Zadaná hesla se neshodují');
+			}
+			if(count($this->getInfo()) == 0) {
+				$data['id'] = $this->getUser()->id;
+				$res = $this->model->checkUserPassword($data['id'], $data['old_password']);
+				if($res == 1) {
+					if($this->model->changePassword($data)) {
+						$this->addInfo('info', 'Heslo úspěšně změněno');
+						return true;
+					} else {
+						$this->addInfo('error', 'Heslo se nepodařilo změnit');
+						return false;
+					}
+				} else {
+					$this->addInfo('error', 'Špatné původní heslo');
+					return false;
+				}
+			} else {
+				return false;
+			}
+		} else {
+			$this->addInfo('error', 'Špatně zadané údaje.');
+		}
+	}
+
 	public function addUser($data = array()) {
-		// server-side validations
 		if(count($data) != 4) {
 			$this->addInfo('error', 'Špatně zadané údaje');
 		}
@@ -36,17 +66,17 @@ class AuthViewModel extends ViewModel {
 		}
 		if(count($this->getInfo()) == 0) {
 			unset($data['confirm']);
-			if(!$this->model->userExists($data['email'])) {
+			if(!$this->model->userExists($data['email'], $data['username'])) {
 				$user = $this->model->createUser($data);
 				if($user) {
-					$this->addInfo('success', 'Uživatel byl vytvořen');
+					$this->addInfo('info', 'Uživatel byl vytvořen');
 					return true;
 				} else {
 					$this->addInfo('error', 'Registrace selhala');
 					return false;
 				}
 			} else {
-				$this->addInfo('error', 'Uživatel se zadanou emailovou adresou již existuje');
+				$this->addInfo('error', 'Uživatel se zadanými údaji již existuje');
 				return false;
 			}
 		} else {

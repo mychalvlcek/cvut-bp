@@ -6,6 +6,10 @@ class ErrorController extends Controller {
 		parent::__construct($model);
 	}
 
+	public function auth() {
+		$this->model->setMessage('K zobrazení této stránky nemáte oprávnění.');
+	}
+
 }
 
 ?>

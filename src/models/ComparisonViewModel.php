@@ -7,15 +7,19 @@ class ComparisonViewModel extends ViewModel {
 	}
 
 	public function getScriptSets() {
-		return $this->model->getAll('script');
+		return $this->model->getScriptSets();
 	}
 
 	public function getRepositories() {
-		return $this->model->getAll('repository');
+		return $this->model->getRepositories();
+	}
+
+	public function getRules() {
+		return $this->model->getRules();
 	}
 
 	public function save($data = array()) {
-		$data['author'] = $this->getLoggedUserId();
+		$data['author'] = $this->getUser()->id;
 		if($this->model->insert($data)) {
 			$this->addInfo('info', 'Proces srovnání úspěšně proběhl');
 		} else {

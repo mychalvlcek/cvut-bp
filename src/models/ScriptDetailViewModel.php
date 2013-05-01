@@ -8,7 +8,11 @@ class ScriptDetailViewModel extends ViewModel implements Detailable, Editable {
 	}
 	
 	public function edit($data) {
-		//return $this->model->update($data);
+		if($this->model->update($data)) {
+			$this->addInfo('info', 'Skript byl upraven');
+		} else {
+			$this->addInfo('error', 'Skript se nepodařilo upravit');
+		}
 	}
 
 	public function setId($id) {

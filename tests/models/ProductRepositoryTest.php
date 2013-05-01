@@ -1,5 +1,6 @@
 <?php
 
+/*
 require_once $_SERVER["DOCUMENT_ROOT"].'/src/models/ElementRepository.php';
 
 class ElementRepositoryTest extends PHPUnit_Extensions_Database_TestCase
@@ -59,3 +60,6 @@ class ElementRepositoryTest extends PHPUnit_Extensions_Database_TestCase
         $this->assertEquals(0, $repository->getById(1)->price);
     }
 }
+*/
+
+?>

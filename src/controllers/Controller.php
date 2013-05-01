@@ -5,7 +5,6 @@ abstract class Controller {
 
 	public function __construct(ViewModel $model) {
 		$this->model = $model;
-		//if(SessionManager::CheckRights("IsMember"))
 		if ( !$this->isUserLogged() ) {
 			header('Location: /auth/login');
 			die();
@@ -13,7 +12,7 @@ abstract class Controller {
 	}
 
 	private function isUserLogged() {
-		return $this->model->isUserLogged();
+		return $this->model->isLogged();
 	}
 
 	public function getName() {

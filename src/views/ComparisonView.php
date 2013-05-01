@@ -9,7 +9,7 @@ class ComparisonView extends View {
 	public function output() {
 		$this->template->set('scripts', $this->model->getScriptSets());
 		$this->template->set('repositories', $this->model->getRepositories());
-		//$this->template->set('rules', $this->model->getRules());
+		$this->template->set('rules', $this->model->getRules());
 
 		return $this->template->output();
 	}

@@ -1,10 +1,9 @@
-<form id="form-repository-new" action="" method="post" class="form-horizontal">
+<form id="form-repository-new" action="" method="post" enctype="multipart/form-data" class="form-horizontal">
 	<br />
 	<div class="tabbable tabs-left">
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="#lA" data-toggle="tab">SQL</a></li>
-			<li class=""><a href="#lB" data-toggle="tab">HTML</a></li>
-			<li><a href="#lC" data-toggle="tab">URL</a></li>
+			<li class="active"><a href="#lA" data-toggle="tab">SQL/HTML</a></li>
+			<li><a href="#lB" data-toggle="tab">URL</a></li>
 		</ul>
 		<div class="tab-content">
 			<h2>Založení repozitáře</h2>
@@ -16,33 +15,16 @@
 	</div>
 			<div class="tab-pane active" id="lA">
 				<fieldset id="form-urlmethod">
-					<legend>Načtení z HTML kódu</legend>
-					<div class="control-group">
-						<label class="control-label" for="input-url">Vložte URL adresu</label>
-						<div class="controls">
-							<input id="input-url" class="input-xlarge" type="text" name="url" placeholder="http://www.example.com/" />
-						</div>
-					</div>
+					<legend>Načtení ze zdrojových souborů</legend>
 					<div class="control-group">
 						<label class="control-label" for="input-file">Vyberte soubor</label>
 						<div class="controls">
-							<input id="input-file" type="file" name="file" />
+							<input id="input-file" type="file" name="file[]" multiple />
 						</div>
 					</div>
 				</fieldset>
 			</div>
 			<div class="tab-pane" id="lB">
-				<fieldset>
-					<legend>Načtení z SQL kódu</legend>
-					<div class="control-group">
-						<label class="control-label" for="textarea-url">Vložte URL adresu</label>
-						<div class="controls">
-							<textarea id="textarea-url" rows="6"></textarea>
-						</div>
-					</div>
-				</fieldset>
-			</div>
-			<div class="tab-pane" id="lC">
 				<fieldset>
 					<legend>Načtení z URL kódu</legend>
 					<div class="control-group">

@@ -9,7 +9,6 @@ class FrontController {
 
 		$routeName = $router->getRouteName($routeParts);
 		$route = $router->getRouteNew($routeName);
-
 		$action = isset($routeParts[1])?$routeParts[1]:'';
 		$action = ($action == 'list'?'lst':$action);
 		$param = isset($routeParts[2])?$routeParts[2]:'';
@@ -22,7 +21,7 @@ class FrontController {
 					PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
 					PDO::ATTR_PERSISTENT => true
 					);
-		$model = new $modelName(new PDO(DB_DRIVER.':host='.DB_HOST.';dbname=' . DB_NAME, DB_USER, DB_PASSWORD, $options));
+		$model = new $modelName(new PDO(DB_DRIVER.':host='.DB_HOST.';dbname=' . DB_NAME, DB_USER, DB_PASSWORD, $options), new SessionManager());
 		$viewModel = new $viewModelName($model);
 		$this->controller = new $controllerName($viewModel);
 		$this->view = new $viewName($routeName, $viewModel, new Template($routeName));

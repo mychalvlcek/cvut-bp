@@ -2,10 +2,6 @@
 
 class ScriptModel extends Model {
 	
-	public function __construct(PDO $db) {
-		$this->db = $db;
-	}
-
 	public function getAll() {
 		$stmt = $this->db->query("SELECT * FROM `script` ORDER BY id DESC;");
 		return $stmt->fetchAll();
@@ -23,6 +19,16 @@ class ScriptModel extends Model {
 									 ORDER BY id DESC;");
 		$stmt->execute(array(':author' => $author));
 		return $stmt->fetch();
+	}
+
+	public function update($data) {
+		$stmt = $this->db->prepare('UPDATE `script` SET title = ?, description = ? ;');
+		$result = $stmt->execute(array($data['title'], $data['description']));
+		return $stmt && $result ? $stmt->rowCount() : false;
+		/*
+		$select_posts=$dbh->prepare("UPDATE activiteiten SET naam= ?  where id= ?");
+		$select->execute(array($id, $naam));
+		*/
 	}
 	
 }

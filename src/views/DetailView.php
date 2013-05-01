@@ -7,12 +7,12 @@ class DetailView extends View {
 	}
 
 	public function output() {
-		//$this->template->setTemplate('user_edit.html'); //
-		$user = $this->model->getDetail();
-		if($user) {
-			$this->template->addVariables($user);
+		$detail = $this->model->getDetail();
+		if($detail) {
+			$this->template->addVariables($detail);
 		} else {
-			$this->template->setTemplate('error_usernotfound.html');
+			$this->template->setTemplate('error.html');
+			$this->template->set('error', 'Detail nebyl nalezen.');
 		}
 		return $this->template->output();
 	}
