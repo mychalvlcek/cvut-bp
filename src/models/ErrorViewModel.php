@@ -3,8 +3,8 @@
 class ErrorViewModel extends ViewModel {
 	private $msg;
 	
-	public function __construct(Model $model) {
-		$this->model = $model;
+	public function __construct(Model $model, SessionManager $sessionManager) {
+		parent::__construct($model, $sessionManager);
 		$this->msg = 'Požadovaná stránka nebyla nalezena.';
 	}
 

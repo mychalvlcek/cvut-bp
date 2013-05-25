@@ -1,0 +1,61 @@
+<div class="detail-actionbar">
+	<ul class="nav nav-pills">
+		<li><a href="#newDirModal" role="button" data-toggle="modal" ><i class="icon-plus-sign"></i> Nová složka</a></li>
+	</ul>
+</div>
+ 
+<!-- Modal -->
+<div id="newDirModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">Vytvoření nové sady</h3>
+	</div>
+	<form action="" method="post" class="form-horizontal" autocomplete>
+		<div class="modal-body">
+			<div class="control-group">
+				<label class="control-label" for="name">Název</label>
+				<div class="controls">
+					<input id="name" type="text" name="name" data-required autofocus />
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-primary">Vytvořit</button>
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Zavřít</button>
+		</div>
+	</form>
+</div>
+<form class="">
+<table class="table table-striped table-condensed">
+	<thead>
+		<tr>
+			<th><!--{sortable id}-->#<!--{/sortable}--></th>
+			<th><!--{sortable name}-->Název<!--{/sortable}--></th>
+			<th>Počet</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<!--{while data}-->
+		<tr>
+			<td><a href="/dir/show/<!--{id}-->"><!--{id}--></a></td>
+			<td><a href="/dir/show/<!--{id}-->"><!--{name}--></a></td>
+			<td><!--{count}--></td>
+			<td><!--{if id == 1}?:<a href="/dir/delete/<!--{id}-->" class="label label-important delete-btn" title="Smazat adresář">Smazat</a>{/if}--></td>
+		</tr>
+		<!--{/while}-->
+		<!--{if noresults}?
+		<tr>
+			<td></td>
+			<td></td>
+			<td class="muted">Nebyly nalezeny žádné výsledky.</td>
+			<td></td>
+			<td></td>
+		</tr>
+		:{/if}-->
+	</tbody>
+</table>
+</form>
+<div class="pagination pagination-centered">
+	<!--{pagination}-->
+</div>

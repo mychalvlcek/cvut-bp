@@ -23,8 +23,9 @@
 		<label class="control-label" for="sada">Sada</label>
 		<div class="controls">
 			<select id="sada" name="dir_id" data-required>
-				<option value="">Vyberte</option>
-				<option value="1">Sada</option>
+				<!--{while dirs}-->
+				<option value="<!--{id}-->"><!--{name}--></option>
+				<!--{/while}-->
 			</select>
 		</div>
 	</div>
@@ -65,6 +66,12 @@
 		</div>
 	</div>
 	<div class="control-group">
+		<label class="control-label" for="depth">Hloubka</label>
+		<div class="controls">
+			<input id="depth" type="text" name="depth" data-required />
+		</div>
+	</div>
+	<div class="control-group">
 		<label class="control-label" for="priority">Priorita</label>
 		<div class="controls">
 			<input id="priority" type="text" name="priority" data-required />
@@ -74,6 +81,12 @@
 		<label class="control-label" for="state">Stav</label>
 		<div class="controls">
 			<input id="state" type="text" name="state" data-required />
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="test_environment">Testovací prostředí</label>
+		<div class="controls">
+			<input id="test_environment" type="text" name="test_environment" data-required />
 		</div>
 	</div>
 	<div class="control-group">

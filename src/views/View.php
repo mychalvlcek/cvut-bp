@@ -9,6 +9,13 @@ class View {
 		$this->route = $route;
 		$this->template = $template;
 	}
+
+	/* TEMPLATE METHOD FOR DISPLAY VIEW */
+	public function display() {
+		$this->init();
+		return $this->output();
+	}
+
 	/**
 	 * View init
 	 * Loads global variables.
@@ -16,9 +23,12 @@ class View {
 	public function init() {
 		$this->template->set('menu', $this->model->getMenu());
 		$this->template->set('route', $this->route);
+
 		$this->template->setInfo($this->model->getInfo());
+
 		$user = $this->model->getUser();
 		$this->template->set('auth_username', $user?$user->username:0);
+		$this->template->set('auth_is_admin', $user?$user->is_admin:0);
 	}
 
 	public function pagination($records = 0, $limit = 20, $page = 1) {

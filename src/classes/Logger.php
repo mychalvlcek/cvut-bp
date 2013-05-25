@@ -54,7 +54,7 @@ final class Logger {
 				$errcolor = "ffff00";
 				$errlevel = "";
 			}
-			echo '<div style="z-index: 255; position: absolute; bottom: 0; width: 100%; border: 3px solid #'.$errcolor.'; border-radius: 5px; padding: 10px; background-color: rgba(245,245,245,0.5); font-size: 13px; color: #000000;opacity: 0.8">'
+			echo '<div style="z-index: 255;margin: .2em;border: 3px solid #'.$errcolor.'; border-radius: 5px; padding: 10px; background-color: rgba(245,245,245,0.5); font-size: 13px; color: #000000;opacity: 0.8">'
 				.'<strong>'.$errlevel.' ['.$errNo.'] '.nl2br($errStr).'</strong> <span style="margin-left: 10px;">File: '.$errFile.' (line: '.$errLine.')</span><span style="color: silver;"> PHP ' . PHP_VERSION . ' (' . PHP_OS . ')</span>'
 				.'</div>';
 			if ( $errNo == E_ERROR || $errNo == E_USER_ERROR ) {
@@ -77,9 +77,8 @@ final class Logger {
 	}
 
 	public final static function exceptionHandler( $ex ) {
-		echo 'adf';
 		if ( self::$debug ) {
-			echo '<div style="z-index: 255; border: 3px solid #red; border-radius: 5px; padding: 10px; background-color: rgba(245,245,245,0.5); font-size: 13px; color: #000000;opacity: 0.8">'
+			echo '<div style="z-index: 255; border: 3px solid red; border-radius: 5px; padding: 10px; background-color: rgba(245,245,245,0.5); font-size: 13px; color: #000000;opacity: 0.8">'
 				.'<strong>['.$ex->getCode().'] '.$ex->getMessage().'</strong> <span style="margin-left: 10px;">File: '.$ex->getFile().' (line: '.$ex->getLine().')</span><span style="color: silver;"> PHP ' . PHP_VERSION . ' (' . PHP_OS . ')</span>'
 				.'</div>';
 		}

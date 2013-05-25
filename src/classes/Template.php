@@ -11,7 +11,6 @@ class Template {
 	}
 
 	public function output($layout = true) {
-		//print_r($this->info);
 		$template = $this->loadTemplate($layout);
 		$template = $this->addIncludes($template);
 		$template = $this->processLoops($template);
@@ -88,7 +87,7 @@ class Template {
 		}
 		return $template;
 	}
-	// update
+
 	private function addIncludes($template) {
 		$filename = $this->fileName;
 
@@ -115,8 +114,7 @@ class Template {
 
 	private function processConditions ( $template ) {
 		$iter = 0;
-		//while ( preg_match("/<!--(if )?([a-z0-9_]+) *(==? *([a-z0-9_]+))? *\?([^;]*);([^-]*)-->/", $template, $regs) ) {
-		while ( preg_match("#<!--\{(if )?([a-z0-9_]+) *(==? *([a-z0-9_]+))? *\?([^:]*):([^/]*(?=\{/if\}-->))\{/if\}-->#", $template, $regs) ) {
+		while ( preg_match("#<!--\{(if )?([a-z0-9_]+) *(==? *([a-z0-9_]+))?\} *\?([^:]*):(.*(?=\{/if\}-->))\{/if\}-->#", $template, $regs) ) {
 			if ( strlen($regs[4]) > 0 ) {
 				if ( $this->get($regs[2]) == $this->get($regs[4]) || $this->get($regs[2]) == $regs[4] ) {
 					$replace = $regs[5];
@@ -151,7 +149,7 @@ class Template {
 				for ( $i = 0; $i < sizeof($data); $i++ ) {
 					$iter = $loop;
 					$iter2 = 0;
-					while ( preg_match("#<!--\{(if )?([a-z0-9_]+) *(==? *([a-z0-9_]+))? *\?([^:]*):(.*(?=\{/if\}-->))\{/if\}-->#", $iter, $parts) ) {
+					while ( preg_match("#<!--\{(if )?([a-z0-9_]+) *(==? *([a-z0-9_]+))?\} *\?([^:]*):(.*(?=\{/if\}-->))\{/if\}-->#", $iter, $parts) ) {
 						if ( strlen($parts[4]) > 0 ) {
 							if ( isset($data[$i][$parts[2]]) ) {
 								if ( $data[$i][$parts[2]] == $this->get($parts[4]) || $data[$i][$parts[2]] == $parts[4] ) {
@@ -373,11 +371,6 @@ class Template {
 		return $template;
 	}
 
-	/**
-	 * parsuje formuláře
-	 * @param array $data data formulářového pole
-	 * @return string
-	 */
 	private function currFormInput ( $data ) {
 		if ( sizeof($data) == 2 ) {
 			$this->form_elem[$data[1]] = null;

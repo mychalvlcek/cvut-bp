@@ -1,12 +1,15 @@
 <h2 class="detail-heading"><span class="muted">#<!--{id}--></span> <!--{title}--></h2>
 <div class="detail-actionbar">
-	<a class="btn" href="/script/edit/<!--{id}-->">Upravit</a>
-	<a class="btn" href="/script/delete/<!--{id}-->">Smazat</a>
+	<ul class="nav nav-pills">
+		<li class="active"><a href="/dir/show/<!--{dir_id}-->">Zpět do sady</a></li>
+		<li><a href="/script/edit/<!--{id}-->">Upravit</a></li>
+		<!--{if auth_is_admin}?<li><a href="/script/delete/<!--{id}-->">Smazat</a></li>:{/if}-->
+	</ul>
 </div>
 <div class="clear"></div>
 <p>
 	<span class="muted">Interní ID:</span> <!--{sys_id}-->,
-	<span class="muted">Sada skriptů:</span> <!--{dir_id}-->,
+	<span class="muted">Sada skriptů:</span> <a href="/dir/show/<!--{dir_id}-->"><!--{directory}--></a>,
 	<span class="muted">Priorita:</span> <!--{priority}-->,
 	<span class="muted">Autor:</span> <!--{author}-->,
 	<span class="muted">Stav:</span> <span class="label"><!--{state}--></span>
@@ -20,3 +23,22 @@
 <p><span class="muted">Vstupní podmínky:</span> <!--{input_conditions}--></p>
 <p><span class="muted">Očekávaný výsledek:</span> <!--{expected_result}--></p>
 <p><span class="muted">Testovací prostředí:</span> <!--{test_environment}--></p>
+
+<hr />
+<h3>Kroky skriptu</h3>
+
+<ul id="myTab" class="nav nav-tabs">
+	<!--{while steps}-->
+	<li <!--{if position == 1}?class="active":{/if}-->><a href="#step-<!--{position}-->" data-toggle="tab"><!--{title}--></a></li>
+	<!--{/while}-->
+</ul>
+<div id="myTabContent" class="tab-content">
+	<!--{while steps}-->
+	<div class="tab-pane fade <!--{if position == 1}?active in:{/if}-->" id="step-<!--{position}-->">
+		<h4><!--{title}--></h4>
+		<p><!--{description}--></p>
+		<p class="muted"><!--{expected_result}--></p>
+	</div>
+	<!--{/while}-->
+</div>
+<hr />

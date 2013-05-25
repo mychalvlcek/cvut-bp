@@ -1,7 +1,7 @@
 <?php
 
 interface Searchable { 
-    public function setCriteria($criteria); 
+	public function setCriteria($criteria);
 }
 
 ?>

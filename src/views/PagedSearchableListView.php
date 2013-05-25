@@ -1,6 +1,6 @@
 <?php
 
-class PagedListView extends View {
+class PagedSearchableListView extends View {
 
 	public function __construct($route, Listable $model, Template $template) {
 		parent::__construct($route, $model, $template);
@@ -8,6 +8,7 @@ class PagedListView extends View {
 
 	public function output() {
 		$this->template->set('html_title', $this->model->getEntityName());
+		$this->template->set('criterium', $this->model->getCriteria());
 
 		$data = $this->model->getData();
 		$this->template->set('data', $data);

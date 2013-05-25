@@ -7,6 +7,10 @@ class AuthController extends Controller {
 	}
 
 	public function login() {
+		if ( $this->isUserLogged() ) {
+			header('Location: /');
+			die();
+		}
 		if(count($_POST))
 			if($this->model->checkLogin($_POST)) {
 				header('Location: /');
@@ -15,8 +19,12 @@ class AuthController extends Controller {
 	}
 
 	public function register() {
+		if ( $this->isUserLogged() ) {
+			header('Location: /');
+			die();
+		}
 		if(count($_POST))
-			if($this->model->addUser($_POST)) {
+			if($this->model->registerUser($_POST)) {
 				header('Location: /login');
 				die();
 			}

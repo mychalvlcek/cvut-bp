@@ -2,6 +2,15 @@
 .clear {
 	clear: both;
 }
+input[type="checkbox"] {
+	margin-bottom: 8px;
+}
+select.change-directory {
+	margin-bottom: 5px;
+}
+button.change-directory {
+	margin-bottom: 5px;
+}
 a.nolink {
 	text-decoration: none;
 	color: inherit;
@@ -28,25 +37,45 @@ a.nolink-active {
 	display: inline-block;
 	margin: .4em 1em;
 }
+.detail-actionbar .nav a {
+	text-decoration: none;
+	background-color: #eeeeee;
+}
+.detail-actionbar .nav .active a {
+	color: #fff;
+	background-color: #08c;
+}
+
 textarea {
 	width: 400px;
 }
 
 /* TABLES */
+table {
+	max-width: 600px;
+}
+.w100 {
+	max-width: 100px;
+}
+.w200 {
+	max-width: 200px;
+	overflow-x: hidden;
+}
+
 td {
 	border-left: 1px dashed lightgray;
 }
-td.id {
+th.id {
 	width: 40px;
 	border-right: 1px dashed lightgray;
 }
-td.stats {
+th.stats {
 	max-width: 35px;
 }
-td.date {
+th.date {
 	width: 150px;
 }
-td.actions {
+th.actions {
 	max-width: 10px;
 }
 

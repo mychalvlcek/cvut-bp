@@ -1,7 +1,7 @@
 <?php
 
 // development mode
-Config::set('development', true);
+Config::set('development', false);
 
 Config::set('path', $_SERVER['DOCUMENT_ROOT'].'/');
 

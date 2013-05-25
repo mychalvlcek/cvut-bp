@@ -1,4 +1,12 @@
-<h2><span class="muted">#<!--{id}--></span> <!--{name}--></h2>
+<h2 class="detail-heading"><span class="muted">#<!--{id}--></span> <!--{name}--></h2>
+<div class="detail-actionbar">
+	<ul class="nav nav-pills">
+		<li class="active"><a href="/repository/list/">Zpět na výpis</a></li>
+		<li rel="tooltip" title="Upraví repozitář" data-placement="bottom"><a href="/repository/edit/<!--{id}-->">Upravit</a></li>
+		<li rel="tooltip" title="Vyprázdní repozitář - smaže jeho prvky" data-placement="bottom"><a class="delete-btn" href="/repository/clear/<!--{id}-->">Vyprázdnit</a></li>
+		<li rel="tooltip" title="Smaže repozitář" data-placement="bottom"><a class="delete-btn" href="/repository/delete/<!--{id}-->">Smazat</a></li>
+	</ul>
+</div>
 <p><span class="muted">vytvořeno:</span> <!--{date_of_creation}--> &nbsp; <span class="label" rel="tooltip" data-placement="bottom" title="<!--{sql_pocet}--> SQL prvků">SQL <!--{sql_pocet}--></span> <span class="label" rel="tooltip" data-placement="bottom" title="<!--{html_pocet}--> HTML prvků">HTML <!--{html_pocet}--></span></p>
 <hr />
 <div class="row">
@@ -8,8 +16,8 @@
 		<thead>
 			<tr>
 				<th>Typ</th>
-				<th>Název</th>
-				<th>Typ</th>
+				<th>Popisek</th>
+				<th>Hodnota</th>
 				<th>Název</th>
 			</tr>
 		</thead>
@@ -17,9 +25,9 @@
 			<!--{while html_elements}-->
 			<tr>
 				<td><!--{type}--></td>
-				<td><!--{anchor_title}--></td>
-				<td><!--{type}--></td>
-				<td><!--{anchor_title}--></td>
+				<td class="w100" title="<!--{label}-->"><!--{label}--></td>
+				<td class="w200" title="<!--{value}-->"><!--{value}--></td>
+				<td><a class="label label-important delete-btn" href="/repository/deleteelement/<!--{id}-->" title="Smazat prvek">Smazat</a></td>
 			</tr>
 			<!--{/while}-->
 		</tbody>

@@ -10,6 +10,14 @@ class UserController extends SecuredController {
 		if(isset($_GET['criterium'])) {
 			$this->search($_GET['criterium']);
 		}
+		// strankovani
+		if(isset($_GET['page'])) {
+			$this->model->setPage($_GET['page']);
+		}
+		// razeni
+		if(isset($_GET['sort']) && isset($_GET['order'])) {
+			$this->model->setSort($_GET['sort'], $_GET['order']);
+		}
 	}
 
 	public function search($criterium) {

@@ -27,7 +27,7 @@ $(function() {
 $('.alert').delay(4000).fadeOut('fast');
 // delete buttons
 $('a.delete-btn').click(function() {
-	return confirm('Opravdu chcete položku smazat?');
+	return confirm('Opravdu chcete tuto akci provézt?');
 });
 // global tooltips
 $('[rel=tooltip]').tooltip();

@@ -11,12 +11,8 @@ abstract class Controller {
 		}
 	}
 
-	private function isUserLogged() {
+	protected function isUserLogged() {
 		return $this->model->isLogged();
-	}
-
-	public function getName() {
-		return get_class($this);
 	}
 }
 

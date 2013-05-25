@@ -2,8 +2,8 @@
 
 class AuthViewModel extends ViewModel {
 	
-	public function __construct(AuthModel $model) {
-		$this->model = $model;
+	public function __construct(AuthModel $model, SessionManager $sessionManager) {
+		parent::__construct($model, $sessionManager);
 	}
 	
 	public function checkLogin($data = array()) {
@@ -51,7 +51,7 @@ class AuthViewModel extends ViewModel {
 		}
 	}
 
-	public function addUser($data = array()) {
+	public function registerUser($data = array()) {
 		if(count($data) != 4) {
 			$this->addInfo('error', 'Špatně zadané údaje');
 		}

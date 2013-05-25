@@ -1,12 +1,18 @@
 <h2>Spuštění procesu srovnání</h2>
 <form action="" method="post" class="form-horizontal">
 	<div class="control-group">
+		<label class="control-label" for="input-url">Název</label>
+		<div class="controls">
+			<input id="input-url" class="input-xlarge" type="text" name="name" placeholder="Název kontroly" data-required />
+		</div>
+	</div>
+	<div class="control-group">
 		<label class="control-label" for="script-set-select">Vyberte set skriptů</label>
 		<div class="controls">
 			<select id="script-set-select" name="script_dir">
 				<option value="">Vyberte</option>
 				<!--{while scripts}-->
-				<option value="<!--{id}-->"><!--{title}--></option>
+				<option value="<!--{id}-->"><!--{name}--></option>
 				<!--{/while}-->
 			</select>
 		</div>
@@ -17,7 +23,7 @@
 			<select id="repository-select" name="repository">
 				<option value="">Vyberte</option>
 				<!--{while repositories}-->
-				<option value="<!--{id}-->"><!--{name}--></option>
+				<option value="<!--{id}-->"><!--{id}--> <!--{name}--></option>
 				<!--{/while}-->
 			</select>
 		</div>

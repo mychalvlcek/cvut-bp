@@ -4,14 +4,11 @@
  */
 class ViewModel {
 	protected $model;
-	private $requestData;
+	protected $sessionManager;
 
-	public function __construct(Model $model) {
+	public function __construct(Model $model, SessionManager $sessionManager) {
 		$this->model = $model;
-	}
-
-	public function getAllRecordsCount($table) {
-		return $this->model->getAllRecordsCount($table);
+		$this->sessionManager = $sessionManager;
 	}
 
 	public function setSort($sort, $order) {
@@ -26,32 +23,40 @@ class ViewModel {
 		return $this->model->getRecordsPerPage();
 	}
 
+
 	public function addInfo($level, $message) {
-		$this->model->addInfo($level, $message);
+		$this->sessionManager->add('messages', $level, $message);
+	}
+	public function getInfo($clear = 1) {
+		$msgs = $this->sessionManager->get('messages');
+		if($msgs == '') $msgs = array();
+		if($clear)
+			$this->sessionManager->clear('messages');
+		return $msgs;
 	}
 
-	public function getInfo() {
-		return $this->model->getInfo();
-	}
-
-	public function getPostData() {
-		return $this->model->getPostData();
-	}
-
-	public function setSession($key = '', $value = '') {
-		$this->model->setSession($key, $value);
-	}
 
 	public function getUser() {
-		return $this->model->getUser();
-	}
-
-	public function isLogged() {
-		return $this->model->isLogged();
+		$user = $this->sessionManager->get('user');
+		if(is_array($user)) return (object) $user;
+		return $user;
 	}
 
 	public function isAdmin() {
-		return $this->model->isAdmin();
+		$user = $this->getUser();
+		return ($user && $user->is_admin?$user->is_admin:false);
+	}
+
+	public function isLogged() {
+		return ($this->getUser()?true:false);
+	}
+
+	public function setSession($key = '', $value = '') {
+		$this->sessionManager->set($key, $value);
+	}
+
+	public function getPostData() {
+		return $_POST;
 	}
 
 	public function getMenu() {
@@ -59,16 +64,14 @@ class ViewModel {
 		return array(
 				array('title' => 'Načtení repozitáře', 'url' => 'repository/add', 'menuroute' => 'repository_add'),
 				array('title' => 'Repozitáře', 'url' => 'repository/list', 'menuroute' => 'repository_list'),
-				array('title' => 'Testovací skripty', 'url' => 'script/list', 'menuroute' => 'script_list'),
-				array('title' => 'Pravidla', 'url' => 'rule/list', 'menuroute' => 'rule_list'),
+				array('title' => 'Sady skriptů', 'url' => 'dir/list', 'menuroute' => 'dir_list'),
 				array('title' => 'Uživatelé', 'url' => 'user/list', 'menuroute' => 'user_list'),
 				array('title' => 'Logy', 'url' => 'log/list', 'menuroute' => 'log_list')
 			);
 		return array(
 				array('title' => 'Načtení repozitáře', 'url' => 'repository/add', 'menuroute' => 'repository_add'),
 				array('title' => 'Repozitáře', 'url' => 'repository/list', 'menuroute' => 'repository_list'),
-				array('title' => 'Testovací skripty', 'url' => 'script/list', 'menuroute' => 'script_list'),
-				array('title' => 'Pravidla', 'url' => 'rule/list', 'menuroute' => 'rule_list'),
+				array('title' => 'Sady skriptů', 'url' => 'dir/list', 'menuroute' => 'dir_list'),
 				array('title' => 'Logy', 'url' => 'log/list', 'menuroute' => 'log_list')
 			);
 	}

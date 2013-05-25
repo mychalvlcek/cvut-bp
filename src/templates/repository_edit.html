@@ -1,11 +1,15 @@
+<h2 class="detail-heading"><span class="muted">#<!--{id}--></span> <!--{name}--></h2>
+<div class="detail-actionbar">
+	<ul class="nav nav-pills">
+		<li class="active"><a href="<!--{if back_url}?:{/if}-->/repository/show/<!--{id}-->">Zpět</a></li>
+	</ul>
+</div>
 <form id="form-repository-new" action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-	<h2>Založení repozitáře</h2>
-	<p>K načtení prvků do repozitáře jsou 2 možnosti, vyberte jakou chcete (nebo i obě).</p>
 	<br />
 	<div class="control-group">
 		<label class="control-label" for="input-url">Název</label>
 		<div class="controls">
-			<input id="input-url" class="input-xlarge" type="text" name="name" placeholder="Název repozitáře" data-required />
+			<input id="input-url" class="input-xlarge" type="text" name="name" placeholder="Název repozitáře" />
 		</div>
 	</div>
 	<div class="control-group">

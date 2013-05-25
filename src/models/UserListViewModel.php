@@ -1,11 +1,11 @@
 <?php
 
 class UserListViewModel extends ViewModel implements Listable, Searchable {
-	private $searchName;
+	private $criterium;
 	
-	public function __construct(UserModel $model) {
-		$this->model = $model;
-		$this->searchName = '';
+	public function __construct(UserModel $model, SessionManager $sessionManager) {
+		parent::__construct($model, $sessionManager);
+		$this->criterium = '';
 	}
 
 	public function getEntityName() {
@@ -13,17 +13,23 @@ class UserListViewModel extends ViewModel implements Listable, Searchable {
 	}
 	
 	public function setCriteria($criteria) {
-		$this->searchName = $criteria;
+		$this->criterium = $criteria;
 	}
 
 	public function getCriteria() {
-		return $this->searchName;
+		return $this->criterium;
 	}
 
 	public function getData() {
-		if($this->searchName == '')
+		if($this->criterium == '')
 			return $this->model->getAll();
-		return $this->model->findByName($this->searchName);
+		return $this->model->findByName($this->criterium);
+	}
+
+	public function getRecordsCount() {
+		if($this->criterium == '')
+			return $this->model->getAllCount();
+		return $this->model->findByNameCount($this->criterium);
 	}
 }
 

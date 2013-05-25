@@ -8,16 +8,14 @@ class SearchableListView extends View {
 
 	public function output() {
 		$this->template->set('html_title', $this->model->getEntityName());
+		$this->template->set('criterium', $this->model->getCriteria());
 
 		$data = $this->model->getData();
 		$this->template->set('data', $data);
 		if(!count($data)) {
 			$this->template->set('noresults', 1);
 		}
-		$criterium = $this->model->getCriteria();
-		if($criterium != '') {
-			$this->template->set('criterium', $criterium);
-		}
+
 		return $this->template->output();
 	}
 }
